@@ -7,6 +7,10 @@ release date when you use `npm version` (see `README.md`).
 
 ## [Unreleased]
 
+### Added
+
+- How to make a release is described in README now
+
 ## [0.1.0][] - 2022-07-18
 
 ### Changed
@@ -17,6 +21,5 @@ release date when you use `npm version` (see `README.md`).
 
 Initial public release.
 
-
-[Unreleased]: https://github.com/webxdc/webxdc-types/compare/v0.1.0...HEAD
+[unreleased]: https://github.com/webxdc/webxdc-types/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/webxdc/webxdc-types/tree/v0.1.0
