@@ -24,7 +24,7 @@
     "dist"
   ],
   "scripts": {
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc",
     "build": "npm run clean && tsc",
     "clean": "rimraf dist",
     "version": "version-changelog CHANGELOG.md && git add CHANGELOG.md",
