@@ -7,4 +7,10 @@ release date when you use `npm version` (see `README.md`).
 
 ## [Unreleased]
 
+## [0.0.2][] - 2022-07-18
+
 Initial public release.
+
+
+[Unreleased]: https://github.com/webxdc/webxdc-types/compare/v0.0.2...HEAD
+[0.0.2]: https://github.com/webxdc/webxdc-types/tree/v0.0.2
