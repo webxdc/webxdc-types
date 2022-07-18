@@ -11,6 +11,12 @@ types for this API. This library provides those types for you.
 
 ## Usage
 
+You can install this using:
+
+```shell
+npm install -D webxdc-types
+```
+
 You should have a type that describes your webxdc payload structure in use
 by your application:
 
@@ -25,7 +31,7 @@ Once you have a `Payload` type, you can declare the type of `window.webxdc` in
 your application:
 
 ```typescript
-import { WebXdc } from "./webxdc";
+import { WebXdc } from "webxdc-types";
 
 declare global {
   interface Window {
