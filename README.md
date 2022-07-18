@@ -11,8 +11,8 @@ types for this API. This library provides those types for you.
 
 ## Usage
 
-You should have a type that describes your webxdc payload structure in your
-application somewhere:
+You should have a type that describes your webxdc payload structure in use
+by your application:
 
 ```typescript
 type Payload = {
