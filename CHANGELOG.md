@@ -9,7 +9,12 @@ release date when you use `npm version` (see `README.md`).
 
 ### Added
 
-- How to make a release is described in README now
+- Release process is now documented in `DEVELOPMENT.md`
+- Add documentation of different uses of this package to readme
+
+### Changed
+
+- updated to the newest definitions from webxdc docs, as this repo should now become the source of truth for the typescript bindings. 
 
 ## [0.1.0][] - 2022-07-18
 
