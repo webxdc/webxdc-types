@@ -7,6 +7,8 @@ release date when you use `npm version` (see `README.md`).
 
 ## [Unreleased]
 
+## [1.0.0][] - 2023-10-11
+
 ### Added
 
 - Release process is now documented in `DEVELOPMENT.md`
@@ -28,3 +30,7 @@ Initial public release.
 
 [unreleased]: https://github.com/webxdc/webxdc-types/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/webxdc/webxdc-types/tree/v0.1.0
+
+
+[Unreleased]: https://github.com/webxdc/webxdc-types/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/webxdc/webxdc-types/tree/v1.0.0
