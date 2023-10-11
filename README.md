@@ -9,6 +9,12 @@ The API is available on `window.webxdc`.
 When you develop your webxdc app in TypeScript, it's handy to have proper
 types for this API. This library provides those types for you.
 
+## Why use this?
+
+- you want better autocomplete in your IDE (js and ts)
+- you want to see docuemntation on hover in your IDE (js and ts)
+- you need types for typescript typechecking
+
 ## Usage
 
 You can install this using:
@@ -16,6 +22,9 @@ You can install this using:
 ```shell
 npm install -D webxdc-types
 ```
+
+<details>
+<summary> Usage in Typescript with typed payload (Recommended) </summary>
 
 You should have a type that describes your webxdc payload structure in use
 by your application:
@@ -40,21 +49,88 @@ declare global {
 }
 ```
 
+(write this in a file that is picked up by the typescript compiler, paths like `src/types.d.ts` or `src/global.d.ts` should work)
+
 Now `window.webxdc` should be fully typed.
 
-## Development
+</details>
 
-You can create a new npm release automatically by doing the following on the
-`main` branch:
+<details>
+<summary> Usage in Typescript without payload typing </summary>
 
-```shell
-npm version patch  # or minor, major, etc
-git push --follow-tags
+Use this if you just want completions for the api, but not for the status update payloads, they will get the `any` type with this method.
+
+```typescript
+import "webxdc-types/dist/global";
+// or
+/// <reference types="webxdc-types/dist/global" />
 ```
 
-[`npm version`](https://docs.npmjs.com/cli/v8/commands/npm-version) updates the
-version number automatically and also puts the latest date in `CHANGELOG.md`.
-You then need to push using `--follow-tags` (**NOT** `--tags`).
+Now `window.webxdc` should be typed.
 
-The release process is done through a github action defined in
-`.workflows/publish.yml` which publishes to the npm registry automatically.
+</details>
+
+<details>
+<summary> 
+usage in plain javascript files (jsdoc)
+</summary>
+
+If your IDE supports it (vscode and it's forks do), you can add `//@ts-check` to the top of your javascript file to enable typescript type checking for it.
+
+you can then type variables like this
+
+```js
+//@ts-check
+
+/** @type {number} documentation of the value */
+const my_var = 8;
+```
+
+You can use this to import the webxdc types when you need them to type your functions:
+
+```js
+/**
+ * @typedef {any} MyPayload
+ * @typedef {import('webxdc-types').XDCFile} XDCFile
+ * @typedef {import('webxdc-types').ReceivedStatusUpdate<MyPayload>} ReceivedStatusUpdate
+ * @typedef {import('webxdc-types').SendingStatusUpdate<MyPayload>} SendingStatusUpdate
+ * @typedef {import('webxdc-types').Webxdc<MyPayload>} Webxdc
+ */
+// note that this does not set `window.webxdc` for you follow the steps below for that.
+```
+
+### Without typed payloads
+
+If you just want the api and not want to type your payloads you can import the types for `window.webxdc` like this:
+
+```
+/** @typedef {import('webxdc-types/dist/global')} */
+```
+
+### With typed payloads
+
+For this you need to create a `mytypes.d.ts` file declaring your payload type:
+
+```typescript
+import { WebXdc } from "webxdc-types";
+
+// do your own payload type here
+type Payload = {
+  label: string;
+  value: number;
+};
+
+declare global {
+  interface Window {
+    webxdc: WebXdc<Payload>;
+  }
+}
+```
+
+Then import this file like this:
+
+```js
+/** @typedef {import('./my_types')} */
+```
+
+</details>
