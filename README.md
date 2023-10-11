@@ -61,9 +61,9 @@ Now `window.webxdc` should be fully typed.
 Use this if you just want completions for the api, but not for the status update payloads, they will get the `any` type with this method.
 
 ```typescript
-import "webxdc-types/dist/global";
+import "webxdc-types/global";
 // or
-/// <reference types="webxdc-types/dist/global" />
+/// <reference types="webxdc-types/global" />
 ```
 
 Now `window.webxdc` should be typed.
@@ -104,7 +104,7 @@ You can use this to import the webxdc types when you need them to type your func
 If you just want the api and not want to type your payloads you can import the types for `window.webxdc` like this:
 
 ```
-/** @typedef {import('webxdc-types/dist/global')} */
+/** @typedef {import('webxdc-types/global')} */
 ```
 
 ### With typed payloads
