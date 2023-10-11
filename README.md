@@ -134,3 +134,20 @@ Then import this file like this:
 ```
 
 </details>
+
+
+<details>
+<summary> 
+usage without package manager (npm, yarn, pnpm and so on.)
+</summary>
+
+Copy `global.d.ts` and `webxdc.d.ts` files into your project and use one of the methods above, adjusting the import path acordingly.
+
+```js
+/** @typedef {import('./global')} */
+/** @typedef {import('./webxdc')} */
+```
+
+You can also combine the two files if you have basic knowledge of typescript.
+
+</details>
