@@ -21,7 +21,8 @@
   ],
   "types": "./webxdc.d.ts",
   "files": [
-    "./*.d.ts"
+    "./*.d.ts",
+    "./*.js"
   ],
   "scripts": {
     "typecheck": "tsc",
