@@ -9,6 +9,10 @@ release date when you use `npm version` (see `README.md`).
 
 ## [1.0.1][] - 2023-10-19
 
+### Fixed
+
+- add dummy js files, because vite complained that it did not found the code, see #5
+
 ## [1.0.0][] - 2023-10-11
 
 ### Added
