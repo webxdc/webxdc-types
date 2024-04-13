@@ -1,7 +1,7 @@
-type SendingStatusUpdate<T> = {
+type SendingStatusUpdate<PayloadType> = {
   /** the payload, deserialized json:
    * any javascript primitive, array or object. */
-  payload: T;
+  payload: PayloadType;
   /** optional, short, informational message that will be added to the chat,
    * eg. "Alice voted" or "Bob scored 123 in MyGame";
    * usually only one line of text is shown,
@@ -16,9 +16,9 @@ type SendingStatusUpdate<T> = {
   summary?: string;
 };
 
-type ReceivedStatusUpdate<T> = {
+type ReceivedStatusUpdate<PayloadType> = {
   /** the payload, deserialized json */
-  payload: T;
+  payload: PayloadType;
   /** the serial number of this update. Serials are larger than 0 and newer serials have higher numbers */
   serial: number;
   /** the maximum serial currently known */
@@ -60,7 +60,7 @@ type SendOptions =
       text: string;
     };
 
-interface Webxdc<T> {
+interface Webxdc<StatusPayload, EphemeralPayload = any> {
   /** Returns the peer's own address.
    *  This is esp. useful if you want to differ between different peers - just send the address along with the payload,
    *  and, if needed, compare the payload addresses against selfAddr() later on. */
@@ -74,7 +74,7 @@ interface Webxdc<T> {
    * @returns promise that resolves when the listener has processed all the update messages known at the time when `setUpdateListener` was called.
    * */
   setUpdateListener(
-    cb: (statusUpdate: ReceivedStatusUpdate<T>) => void,
+    cb: (statusUpdate: ReceivedStatusUpdate<StatusPayload>) => void,
     serial?: number
   ): Promise<void>;
 
@@ -82,24 +82,24 @@ interface Webxdc<T> {
    * Set a listener for _ephemeral_ status updates.
    * Own status updates are not received.
    */
-  setEphemeralUpdateListener(cb: (payload: T) => void): void;
+  setEphemeralUpdateListener(cb: (payload: EphemeralPayload) => void): void;
 
   /**
    * @deprecated See {@link setUpdateListener|`setUpdateListener()`}.
    */
-  getAllUpdates(): Promise<ReceivedStatusUpdate<T>[]>;
+  getAllUpdates(): Promise<ReceivedStatusUpdate<StatusPayload>[]>;
   /**
    * Webxdc are usually shared in a chat and run independently on each peer. To get a shared status, the peers use sendUpdate() to send updates to each other.
    * @param update status update to send
    * @param description short, human-readable description what this update is about. this is shown eg. as a fallback text in an email program.
    */
-  sendUpdate(update: SendingStatusUpdate<T>, description: string): void;
+  sendUpdate(update: SendingStatusUpdate<StatusPayload>, description: string): void;
 
   /**
    * Send an ephemeral update to another peer.
    * @param payload Data that can be serialized with `JSON.stringify`.
    */
-  sendEphemeralUpdate(payload: T): void;
+  sendEphemeralUpdate(payload: EphemeralPayload): void;
 
   /**
    * Send a message with file, text or both to a chat.
@@ -130,21 +130,4 @@ interface Webxdc<T> {
   }): Promise<File[]>;
 }
 
-////////// ANCHOR: global
-declare global {
-  interface Window {
-    webxdc: Webxdc<any>;
-  }
-}
-////////// ANCHOR_END: global
-
 export { SendingStatusUpdate, ReceivedStatusUpdate, Webxdc, XDCFile };
-
-/* Types for the Simulator */
-declare global {
-  interface Window {
-    addXdcPeer: () => void;
-    clearXdcStorage: () => void;
-    alterXdcApp: () => void;
-  }
-}

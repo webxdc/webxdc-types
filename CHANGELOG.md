@@ -7,13 +7,23 @@ release date when you use `npm version` (see `README.md`).
 
 ## [Unreleased]
 
-## [1.0.1][] - 2023-10-19
+## [1.1.0] - 2023-04-13
+
+### Added
+
+- Ephemeral Message api
+
+### Changed
+
+- clarify what `T` is
+
+## [1.0.1] - 2023-10-19
 
 ### Fixed
 
 - add dummy js files, because vite complained that it did not found the code, see #5
 
-## [1.0.0][] - 2023-10-11
+## [1.0.0] - 2023-10-11
 
 ### Added
 
@@ -24,20 +34,20 @@ release date when you use `npm version` (see `README.md`).
 
 - updated to the newest definitions from webxdc docs, as this repo should now become the source of truth for the typescript bindings. 
 
-## [0.1.0][] - 2022-07-18
+## [0.1.0] - 2022-07-18
 
 ### Changed
 
 - Fix import in README
 
-## [0.0.3][] - 2022-07-18
+## [0.0.3] - 2022-07-18
 
 Initial public release.
 
-[unreleased]: https://github.com/webxdc/webxdc-types/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/webxdc/webxdc-types/tree/v0.1.0
 
-
-[Unreleased]: https://github.com/webxdc/webxdc-types/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/webxdc/webxdc-types/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/webxdc/webxdc-types/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/webxdc/webxdc-types/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/webxdc/webxdc-types/tree/v1.0.0
+[0.1.0]: https://github.com/webxdc/webxdc-types/tree/v0.1.0
+[0.0.3]: https://github.com/webxdc/webxdc-types/tree/v0.0.3
