@@ -63,7 +63,7 @@ Now `window.webxdc` should be fully typed.
 <details>
 <summary> Usage in Typescript without payload typing </summary>
 
-Use this if you just want completions for the api, but not for the status update payloads nor for the ephemeral message playloads, they will get the `any` type with this method.
+Use this if you just want completions only for the global API, but not for the status update and ephemeral message payloads. These will be filled with the generic `any` type.
 
 ```typescript
 import "webxdc-types/global";
