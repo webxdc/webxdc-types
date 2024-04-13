@@ -81,8 +81,10 @@ interface Webxdc<StatusPayload, EphemeralPayload = any> {
   /**
    * Set a listener for _ephemeral_ status updates.
    * Own status updates are not received.
+   * 
+   * @returns Promise that is resolved when the there is atleast one peer connected
    */
-  setEphemeralUpdateListener(cb: (payload: EphemeralPayload) => void): void;
+  setEphemeralUpdateListener(cb: (payload: EphemeralPayload) => void): Promise<void>;
 
   /**
    * @deprecated See {@link setUpdateListener|`setUpdateListener()`}.
@@ -98,8 +100,10 @@ interface Webxdc<StatusPayload, EphemeralPayload = any> {
   /**
    * Send an ephemeral update to another peer.
    * @param payload Data that can be serialized with `JSON.stringify`.
+   * 
+   * @returns resolves when (TODO is it when it is sent or registered by core?)
    */
-  sendEphemeralUpdate(payload: EphemeralPayload): void;
+  sendEphemeralUpdate(payload: EphemeralPayload): Promise<void>;
 
   /**
    * Send a message with file, text or both to a chat.
