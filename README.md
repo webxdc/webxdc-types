@@ -40,11 +40,11 @@ Once you have a `Payload` type, you can declare the type of `window.webxdc` in
 your application:
 
 ```typescript
-import { WebXdc } from "webxdc-types";
+import { Webxdc } from "webxdc-types";
 
 declare global {
   interface Window {
-    webxdc: WebXdc<Payload>;
+    webxdc: Webxdc<Payload>;
   }
 }
 ```
@@ -112,7 +112,7 @@ If you just want the api and not want to type your payloads you can import the t
 For this you need to create a `mytypes.d.ts` file declaring your payload type:
 
 ```typescript
-import { WebXdc } from "webxdc-types";
+import { Webxdc } from "webxdc-types";
 
 // do your own payload type here
 type Payload = {
@@ -122,7 +122,7 @@ type Payload = {
 
 declare global {
   interface Window {
-    webxdc: WebXdc<Payload>;
+    webxdc: Webxdc<Payload>;
   }
 }
 ```
