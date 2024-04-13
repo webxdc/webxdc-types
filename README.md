@@ -34,6 +34,11 @@ type Payload = {
   label: string;
   value: number;
 };
+// optional, only needed when you are planning to use the Ephemeral message p2p api.
+type EphemeralPayload = {
+  my_action: string;
+  my_argument: string;
+};
 ```
 
 Once you have a `Payload` type, you can declare the type of `window.webxdc` in
@@ -44,7 +49,7 @@ import { WebXdc } from "webxdc-types";
 
 declare global {
   interface Window {
-    webxdc: WebXdc<Payload>;
+    webxdc: WebXdc<Payload, EphemeralPayload>;
   }
 }
 ```
@@ -58,7 +63,7 @@ Now `window.webxdc` should be fully typed.
 <details>
 <summary> Usage in Typescript without payload typing </summary>
 
-Use this if you just want completions for the api, but not for the status update payloads, they will get the `any` type with this method.
+Use this if you just want completions for the api, but not for the status update payloads nor for the ephemeral message playloads, they will get the `any` type with this method.
 
 ```typescript
 import "webxdc-types/global";
@@ -90,11 +95,12 @@ You can use this to import the webxdc types when you need them to type your func
 
 ```js
 /**
- * @typedef {any} MyPayload
+ * @typedef {any} MyUpdatePayload
+ * @typedef {any} MyEphemeralPayload
  * @typedef {import('webxdc-types').XDCFile} XDCFile
- * @typedef {import('webxdc-types').ReceivedStatusUpdate<MyPayload>} ReceivedStatusUpdate
- * @typedef {import('webxdc-types').SendingStatusUpdate<MyPayload>} SendingStatusUpdate
- * @typedef {import('webxdc-types').Webxdc<MyPayload>} Webxdc
+ * @typedef {import('webxdc-types').ReceivedStatusUpdate<MyUpdatePayload, MyEphemeralPayload>} ReceivedStatusUpdate
+ * @typedef {import('webxdc-types').SendingStatusUpdate<MyUpdatePayload, MyEphemeralPayload>} SendingStatusUpdate
+ * @typedef {import('webxdc-types').Webxdc<MyUpdatePayload, MyEphemeralPayload>} Webxdc
  */
 // note that this does not set `window.webxdc` for you follow the steps below for that.
 ```
@@ -109,7 +115,7 @@ If you just want the api and not want to type your payloads you can import the t
 
 ### With typed payloads
 
-For this you need to create a `mytypes.d.ts` file declaring your payload type:
+For this you need to create a `mytypes.d.ts` file declaring your payload types:
 
 ```typescript
 import { WebXdc } from "webxdc-types";
@@ -120,9 +126,16 @@ type Payload = {
   value: number;
 };
 
+// optional, only needed when you are planning to use the Ephemeral message p2p api.
+// if you do not use it set it to `any`
+type EphemeralPayload = {
+  my_action: string;
+  my_argument: string;
+};
+
 declare global {
   interface Window {
-    webxdc: WebXdc<Payload>;
+    webxdc: WebXdc<Payload, EphemeralPayload>;
   }
 }
 ```
