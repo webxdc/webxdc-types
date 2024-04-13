@@ -101,7 +101,7 @@ interface Webxdc<StatusPayload, EphemeralPayload = any> {
    * Send an ephemeral update to another peer.
    * @param payload Data that can be serialized with `JSON.stringify`.
    * 
-   * @returns resolves when (TODO is it when it is sent or registered by core?)
+   * @returns A promise that resolves when a peer connection is established. Ephemeral messages can then be sent with `sendEphemeral`
    */
   sendEphemeralUpdate(payload: EphemeralPayload): Promise<void>;
 
