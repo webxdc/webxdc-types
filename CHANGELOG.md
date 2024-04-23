@@ -7,11 +7,11 @@ release date when you use `npm version` (see `README.md`).
 
 ## [Unreleased]
 
-## [1.1.0] - 2023-04-13
+## [1.1.0] - 2023-04-22
 
 ### Added
 
-- Ephemeral Message api
+- Realtime data API
 
 ### Changed
 

@@ -60,7 +60,7 @@ type SendOptions =
       text: string;
     };
 
-interface Webxdc<StatusPayload, EphemeralPayload = any> {
+interface Webxdc<StatusPayload> {
   /** Returns the peer's own address.
    *  This is esp. useful if you want to differ between different peers - just send the address along with the payload,
    *  and, if needed, compare the payload addresses against selfAddr() later on. */
@@ -79,12 +79,9 @@ interface Webxdc<StatusPayload, EphemeralPayload = any> {
   ): Promise<void>;
 
   /**
-   * Set a listener for _ephemeral_ status updates.
-   * Own status updates are not received.
-   * 
-   * @returns Promise that is resolved when the there is atleast one peer connected
+   * Set a listener for realtime data.
    */
-  setEphemeralUpdateListener(cb: (payload: EphemeralPayload) => void): Promise<void>;
+  setRealtimeListener(cb: (payload: Uint8Array) => void): void;
 
   /**
    * @deprecated See {@link setUpdateListener|`setUpdateListener()`}.
@@ -98,12 +95,9 @@ interface Webxdc<StatusPayload, EphemeralPayload = any> {
   sendUpdate(update: SendingStatusUpdate<StatusPayload>, description: string): void;
 
   /**
-   * Send an ephemeral update to another peer.
-   * @param payload Data that can be serialized with `JSON.stringify`.
-   * 
-   * @returns A promise that resolves when a peer connection is established. Ephemeral messages can then be sent with `sendEphemeral`
+   * Send realtime data.
    */
-  sendEphemeralUpdate(payload: EphemeralPayload): Promise<void>;
+  sendRealtimeData(payload: Uint8Array): void;
 
   /**
    * Send a message with file, text or both to a chat.
