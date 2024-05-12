@@ -64,20 +64,19 @@ type SendOptions =
  * A listener for realtime data.
  */
 export class RealtimeListener {
-  listener: (data: Uint8Array) => void
-  active: boolean
-  trashed: boolean
+  private listener: (data: Uint8Array) => void
+  private trashed: boolean
 
   /* Whether the realtime channel was left */
-  is_trashed(): boolean
+  private is_trashed(): boolean
   /* Receive data from the realtime channel */
-  receive(data: Uint8Array): void
+  private receive(data: Uint8Array): void
   /* Set a listener for the realtime channel */
-  setListener(listener: (data: Uint8Array) => void): void
+  public setListener(listener: (data: Uint8Array) => void): void
   /* Send data over the realtime channel */
-  send(data: Uint8Array): void
+  public send(data: Uint8Array): void
   /* Leave the realtime channel */
-  leave(): void
+  public leave(): void
 }
 
 interface Webxdc<StatusPayload> {
@@ -113,12 +112,6 @@ interface Webxdc<StatusPayload> {
    * @param description short, human-readable description what this update is about. this is shown eg. as a fallback text in an email program.
    */
   sendUpdate(update: SendingStatusUpdate<StatusPayload>, description: string): void;
-
-  /**
-   * Send realtime data.
-   */
-  sendRealtimeData(payload: Uint8Array): void;
-
   /**
    * Send a message with file, text or both to a chat.
    * Asks user to what Chat to send the message to.
