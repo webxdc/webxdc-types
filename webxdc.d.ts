@@ -99,7 +99,8 @@ interface Webxdc<StatusPayload> {
 
   /**
    * Join a realtime channel.
-   * Calling this function a second time without leaving the previous channel will throw an error.
+   * @throws Calling this function a second time
+   * without leaving the previous channel will throw an error.
    */
   joinRealtimeChannel(): RealtimeListener;
 
