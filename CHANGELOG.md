@@ -7,6 +7,8 @@ release date when you use `npm version` (see `README.md`).
 
 ## [Unreleased]
 
+## [2.0.0][] - 2024-11-15
+
 ### Changed
 
 - package renamed to `@webxdc/types`
@@ -49,7 +51,8 @@ release date when you use `npm version` (see `README.md`).
 Initial public release.
 
 
-[Unreleased]: https://github.com/webxdc/webxdc-types/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/webxdc/webxdc-types/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/webxdc/webxdc-types/compare/v1.1.0...v2.0.0
 [1.1.0]: https://github.com/webxdc/webxdc-types/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/webxdc/webxdc-types/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/webxdc/webxdc-types/tree/v1.0.0

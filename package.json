@@ -1,6 +1,6 @@
 {
   "name": "@webxdc/types",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "TypeScript type definitions for webxdc",
   "homepage": "https://github.com/webxdc/webxdc-types#readme",
   "keywords": [
