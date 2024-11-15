@@ -20,7 +20,7 @@ types for this API. This library provides those types for you.
 You can install this using:
 
 ```shell
-npm install -D webxdc-types
+npm install -D @webxdc/types
 ```
 
 <details>
@@ -40,7 +40,7 @@ Once you have a `Payload` type, you can declare the type of `window.webxdc` in
 your application:
 
 ```typescript
-import { Webxdc } from "webxdc-types";
+import { Webxdc } from "@webxdc/types";
 
 declare global {
   interface Window {
@@ -61,9 +61,9 @@ Now `window.webxdc` should be fully typed.
 Use this if you just want completions for the api, but not for the status update payloads, they will get the `any` type with this method.
 
 ```typescript
-import "webxdc-types/global";
+import "@webxdc/types/global";
 // or
-/// <reference types="webxdc-types/global" />
+/// <reference types="@webxdc/types/global" />
 ```
 
 Now `window.webxdc` should be typed.
@@ -91,10 +91,10 @@ You can use this to import the webxdc types when you need them to type your func
 ```js
 /**
  * @typedef {any} MyPayload
- * @typedef {import('webxdc-types').XDCFile} XDCFile
- * @typedef {import('webxdc-types').ReceivedStatusUpdate<MyPayload>} ReceivedStatusUpdate
- * @typedef {import('webxdc-types').SendingStatusUpdate<MyPayload>} SendingStatusUpdate
- * @typedef {import('webxdc-types').Webxdc<MyPayload>} Webxdc
+ * @typedef {import('@webxdc/types').XDCFile} XDCFile
+ * @typedef {import('@webxdc/types').ReceivedStatusUpdate<MyPayload>} ReceivedStatusUpdate
+ * @typedef {import('@webxdc/types').SendingStatusUpdate<MyPayload>} SendingStatusUpdate
+ * @typedef {import('@webxdc/types').Webxdc<MyPayload>} Webxdc
  */
 // note that this does not set `window.webxdc` for you follow the steps below for that.
 ```
@@ -104,7 +104,7 @@ You can use this to import the webxdc types when you need them to type your func
 If you just want the api and not want to type your payloads you can import the types for `window.webxdc` like this:
 
 ```
-/** @typedef {import('webxdc-types/global')} */
+/** @typedef {import('@webxdc/types/global')} */
 ```
 
 ### With typed payloads
@@ -112,7 +112,7 @@ If you just want the api and not want to type your payloads you can import the t
 For this you need to create a `mytypes.d.ts` file declaring your payload type:
 
 ```typescript
-import { Webxdc } from "webxdc-types";
+import { Webxdc } from "@webxdc/types";
 
 // do your own payload type here
 type Payload = {

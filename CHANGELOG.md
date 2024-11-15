@@ -7,6 +7,10 @@ release date when you use `npm version` (see `README.md`).
 
 ## [Unreleased]
 
+### Changed
+
+- package renamed to `@webxdc/types`
+
 ## [1.1.0] - 2023-04-22
 
 ### Added
