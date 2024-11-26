@@ -30,6 +30,19 @@ type ReceivedStatusUpdate<PayloadType> = {
   document?: string;
   /** optional, short text, shown beside the webxdc's icon. */
   summary?: string;
+  /** optional, a string that specifies a relative URL.
+      When a receiver starts the webxdc app based on the update object
+      the app will be navigated to the `href` location with the application
+      root url prepended. Example: `index.html#about`
+    */
+  href?: string;
+  /** optional, dictionary mapping an address to a text that should be shown
+      as a user-visible notification to the addressed user.
+      The optional special key "*" serves as a catch-all address
+      whose text shall be notified on the receiver side if `selfAddr` is not
+      contained in the dictionary
+    */
+  notify?: { [key: string]: string };
 };
 
 type XDCFile = {
@@ -64,19 +77,19 @@ type SendOptions =
  * A listener for realtime data.
  */
 export class RealtimeListener {
-  private listener: (data: Uint8Array) => void
-  private trashed: boolean
+  private listener: (data: Uint8Array) => void;
+  private trashed: boolean;
 
   /* Whether the realtime channel was left */
-  private is_trashed(): boolean
+  private is_trashed(): boolean;
   /* Receive data from the realtime channel */
-  private receive(data: Uint8Array): void
+  private receive(data: Uint8Array): void;
   /* Set a listener for the realtime channel */
-  public setListener(listener: (data: Uint8Array) => void): void
+  public setListener(listener: (data: Uint8Array) => void): void;
   /* Send data over the realtime channel */
-  public send(data: Uint8Array): void
+  public send(data: Uint8Array): void;
   /* Leave the realtime channel */
-  public leave(): void
+  public leave(): void;
 }
 
 interface Webxdc<StatusPayload> {
@@ -86,11 +99,20 @@ interface Webxdc<StatusPayload> {
   selfAddr: string;
   /** Returns the peer's own name. This is name chosen by the user in their settings, if there is nothing set, that defaults to the peer's address. */
   selfName: string;
+  /** Indicates the number of milliseconds to wait for before calling
+      {@link sendUpdate} again since the last call. If the webxdc app calls
+      {@link sendUpdate} earlier than the specified interval the messaging layer
+      may delay updates for much longer than the interval. */
+  sendUpdateInterval: number;
+  /** is the maximum number of bytes that the messaging layer will accept
+      for a serialized `update` object passed into a {@link sendUpdate} invocation.
+    */
+  sendUpdateMaxSize: number;
   /**
    * set a listener for new status updates.
    * The "serial" specifies the last serial that you know about (defaults to 0).
    * Note that own status updates, that you send with {@link sendUpdate}, also trigger this method
-   * @returns promise that resolves when the listener has processed all the update messages known at the time when `setUpdateListener` was called.
+   * @returns promise that resolves when the listener has processed all the update messages known at the time when {@link setUpdateListener} was called.
    * */
   setUpdateListener(
     cb: (statusUpdate: ReceivedStatusUpdate<StatusPayload>) => void,
@@ -111,9 +133,12 @@ interface Webxdc<StatusPayload> {
   /**
    * Webxdc are usually shared in a chat and run independently on each peer. To get a shared status, the peers use sendUpdate() to send updates to each other.
    * @param update status update to send
-   * @param description short, human-readable description what this update is about. this is shown eg. as a fallback text in an email program.
+   * @param description @deprecated, pass an empty string for backward compatibility
    */
-  sendUpdate(update: SendingStatusUpdate<StatusPayload>, description: string): void;
+  sendUpdate(
+    update: SendingStatusUpdate<StatusPayload>,
+    description: string
+  ): void;
   /**
    * Send a message with file, text or both to a chat.
    * Asks user to what Chat to send the message to.
