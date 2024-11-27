@@ -1,4 +1,4 @@
-# Types for webxdc
+# Types for webxdc [![npm package](https://img.shields.io/npm/v/@webxdc/types.svg)](https://npmjs.com/package/@webxdc/types)
 
 When you develop a [webxdc app](https://webxdc.org), you use the [webxdc
 API](https://docs.webxdc.org/spec.html) to communicate with other instances of
