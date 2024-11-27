@@ -7,6 +7,8 @@ release date when you use `npm version` (see `README.md`).
 
 ## [Unreleased]
 
+## [2.1.2][] - 2024-11-27
+
 ### Fixed
 
 - fix `RealtimeListener` interface, don't declare internal private methods
@@ -71,7 +73,8 @@ release date when you use `npm version` (see `README.md`).
 Initial public release.
 
 
-[Unreleased]: https://github.com/webxdc/webxdc-types/compare/v2.1.1...HEAD
+[Unreleased]: https://github.com/webxdc/webxdc-types/compare/v2.1.2...HEAD
+[2.1.2]: https://github.com/webxdc/webxdc-types/compare/v2.1.1...v2.1.2
 [2.1.1]: https://github.com/webxdc/webxdc-types/compare/v2.1.0...v2.1.1
 [2.1.0]: https://github.com/webxdc/webxdc-types/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/webxdc/webxdc-types/compare/v1.1.0...v2.0.0
