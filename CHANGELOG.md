@@ -7,6 +7,10 @@ release date when you use `npm version` (see `README.md`).
 
 ## [Unreleased]
 
+### Fixed
+
+- add missing fields to `SendingStatusUpdate`
+
 ## [2.1.0][] - 2024-11-27
 
 ### Added

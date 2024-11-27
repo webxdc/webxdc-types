@@ -14,22 +14,6 @@ type SendingStatusUpdate<PayloadType> = {
    * it is recommended to use some aggregated value,
    * eg. "8 votes", "Highscore: 123" */
   summary?: string;
-};
-
-type ReceivedStatusUpdate<PayloadType> = {
-  /** the payload, deserialized json */
-  payload: PayloadType;
-  /** the serial number of this update. Serials are larger than 0 and newer serials have higher numbers */
-  serial: number;
-  /** the maximum serial currently known */
-  max_serial: number;
-  /** optional, short, informational message. */
-  info?: string;
-  /** optional, if the Webxdc creates a document, this is the name of the document;
-   * not set if the Webxdc does not create a document */
-  document?: string;
-  /** optional, short text, shown beside the webxdc's icon. */
-  summary?: string;
   /** optional, a string that specifies a relative URL.
       When a receiver starts the webxdc app based on the update object
       the app will be navigated to the `href` location with the application
@@ -43,6 +27,13 @@ type ReceivedStatusUpdate<PayloadType> = {
       contained in the dictionary
     */
   notify?: { [key: string]: string };
+};
+
+type ReceivedStatusUpdate<PayloadType> = SendingStatusUpdate<PayloadType> & {
+  /** the serial number of this update. Serials are larger than 0 and newer serials have higher numbers */
+  serial: number;
+  /** the maximum serial currently known */
+  max_serial: number;
 };
 
 type XDCFile = {
