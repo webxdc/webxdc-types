@@ -7,6 +7,14 @@ release date when you use `npm version` (see `README.md`).
 
 ## [Unreleased]
 
+### Added
+
+- `ReceivedStatusUpdate.href` API
+- `ReceivedStatusUpdate.notify` API
+- `Webxdc.sendUpdateInterval` API
+- `Webxdc.sendUpdateMaxSize` API
+- deprecate `description` parameter in `Webxdc.sendUpdate()`
+
 ## [2.0.0][] - 2024-11-15
 
 ### Changed
