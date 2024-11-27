@@ -1,4 +1,4 @@
-type SendingStatusUpdate<PayloadType> = {
+export type SendingStatusUpdate<PayloadType> = {
   /** the payload, deserialized json:
    * any javascript primitive, array or object. */
   payload: PayloadType;
@@ -29,14 +29,14 @@ type SendingStatusUpdate<PayloadType> = {
   notify?: { [key: string]: string };
 };
 
-type ReceivedStatusUpdate<PayloadType> = SendingStatusUpdate<PayloadType> & {
+export type ReceivedStatusUpdate<PayloadType> = SendingStatusUpdate<PayloadType> & {
   /** the serial number of this update. Serials are larger than 0 and newer serials have higher numbers */
   serial: number;
   /** the maximum serial currently known */
   max_serial: number;
 };
 
-type XDCFile = {
+export type XDCFile = {
   /** name of the file, including extension */
   name: string;
 } & (
@@ -67,23 +67,16 @@ type SendOptions =
 /**
  * A listener for realtime data.
  */
-export class RealtimeListener {
-  private listener: (data: Uint8Array) => void;
-  private trashed: boolean;
-
-  /* Whether the realtime channel was left */
-  private is_trashed(): boolean;
-  /* Receive data from the realtime channel */
-  private receive(data: Uint8Array): void;
+export interface RealtimeListener {
   /* Set a listener for the realtime channel */
-  public setListener(listener: (data: Uint8Array) => void): void;
+  setListener(listener: (data: Uint8Array) => void): void;
   /* Send data over the realtime channel */
-  public send(data: Uint8Array): void;
+  send(data: Uint8Array): void;
   /* Leave the realtime channel */
-  public leave(): void;
+  leave(): void;
 }
 
-interface Webxdc<StatusPayload> {
+export interface Webxdc<StatusPayload> {
   /** Returns the peer's own address.
    *  This is esp. useful if you want to differ between different peers - just send the address along with the payload,
    *  and, if needed, compare the payload addresses against selfAddr() later on. */
@@ -155,5 +148,3 @@ interface Webxdc<StatusPayload> {
     multiple?: boolean;
   }): Promise<File[]>;
 }
-
-export { SendingStatusUpdate, ReceivedStatusUpdate, Webxdc, XDCFile };

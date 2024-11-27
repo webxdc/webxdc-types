@@ -7,6 +7,10 @@ release date when you use `npm version` (see `README.md`).
 
 ## [Unreleased]
 
+### Fixed
+
+- fix `RealtimeListener` interface, don't declare internal private methods
+
 ## [2.1.1][] - 2024-11-27
 
 ### Fixed
