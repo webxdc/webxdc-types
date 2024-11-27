@@ -25,15 +25,14 @@
     "./*.js"
   ],
   "scripts": {
-    "typecheck": "tsc",
-    "fix-formatting": "prettier --write *.d.ts",
+    "check": "tsc",
+    "fix": "prettier --write *.d.ts",
     "version": "version-changelog CHANGELOG.md && git add CHANGELOG.md"
   },
   "devDependencies": {
-    "@tsconfig/recommended": "^1.0.1",
-    "prettier": "^2.7.1",
-    "typescript": "^4.7.3",
-    "version-changelog": "^3.1.1"
-  },
-  "dependencies": {}
+    "@tsconfig/recommended": "latest",
+    "prettier": "latest",
+    "typescript": "latest",
+    "version-changelog": "latest"
+  }
 }
