@@ -117,7 +117,7 @@ export interface Webxdc<StatusPayload> {
   /**
    * Webxdc are usually shared in a chat and run independently on each peer. To get a shared status, the peers use sendUpdate() to send updates to each other.
    * @param update status update to send
-   * @param description @deprecated, pass an empty string for backward compatibility
+   * @param description Deprecated but must be an empty string for backwards compatibility
    */
   sendUpdate(update: SendingStatusUpdate<StatusPayload>, description: ""): void;
   /**
