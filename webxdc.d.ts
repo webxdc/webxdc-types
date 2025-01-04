@@ -117,15 +117,9 @@ export interface Webxdc<StatusPayload> {
   /**
    * Webxdc are usually shared in a chat and run independently on each peer. To get a shared status, the peers use sendUpdate() to send updates to each other.
    * @param update status update to send
+   * @param description @deprecated, pass an empty string for backward compatibility
    */
-  sendUpdate(update: SendingStatusUpdate<StatusPayload>): void;
-  /**
-   * Deprecated, use {@link Webxdc.sendUpdate | sendUpdate(update)} instead
-   * @deprecated
-   * @param update status update to send
-   * @param description Deprecated, pass an empty string for backward compatibility
-   */
-  sendUpdate(update: SendingStatusUpdate<StatusPayload>, description: string): void;
+  sendUpdate(update: SendingStatusUpdate<StatusPayload>, description: ""): void;
   /**
    * Send a message with file, text or both to a chat.
    * Asks user to what Chat to send the message to.
