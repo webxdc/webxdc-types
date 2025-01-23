@@ -7,6 +7,8 @@ release date when you use `npm version` (see `README.md`).
 
 ## [Unreleased]
 
+- Make `webxdc.setUpdateListener` API work correctly with async callbacks
+
 ## [2.1.2][] - 2024-11-27
 
 ### Fixed
