@@ -30,11 +30,11 @@ export type SendingStatusUpdate<PayloadType> = {
 };
 
 export type ReceivedStatusUpdate<PayloadType> = SendingStatusUpdate<PayloadType> & {
-  /** the serial number of this update. Serials are larger than 0 and newer serials have higher numbers */
-  serial: number;
-  /** the maximum serial currently known */
-  max_serial: number;
-};
+    /** the serial number of this update. Serials are larger than 0 and newer serials have higher numbers */
+    serial: number;
+    /** the maximum serial currently known */
+    max_serial: number;
+  };
 
 export type XDCFile = {
   /** name of the file, including extension */
@@ -99,8 +99,10 @@ export interface Webxdc<StatusPayload> {
    * @returns promise that resolves when the listener has processed all the update messages known at the time when {@link setUpdateListener} was called.
    * */
   setUpdateListener(
-    cb: (statusUpdate: ReceivedStatusUpdate<StatusPayload>) => void,
-    serial?: number,
+    cb: (
+      statusUpdate: ReceivedStatusUpdate<StatusPayload>
+    ) => void | Promise<void>,
+    serial?: number
   ): Promise<void>;
 
   /**
