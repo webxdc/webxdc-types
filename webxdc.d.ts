@@ -83,6 +83,10 @@ export interface Webxdc<StatusPayload> {
   selfAddr: string;
   /** Returns the peer's own name. This is name chosen by the user in their settings, if there is nothing set, that defaults to the peer's address. */
   selfName: string;
+  /** True if the peer is the sender of this webxdc instance, false otherwise. */
+  isAppSender: boolean;
+  /** True if the webxdc instance is inside a broadcast channel, false otherwise. */
+  isBroadcast: boolean;
   /** Indicates the number of milliseconds to wait for before calling
       {@link sendUpdate} again since the last call. If the webxdc app calls
       {@link sendUpdate} earlier than the specified interval the messaging layer
