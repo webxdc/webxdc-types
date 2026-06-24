@@ -86,12 +86,18 @@ export interface Webxdc<StatusPayload> {
   /** Indicates the number of milliseconds to wait for before calling
       {@link sendUpdate} again since the last call. If the webxdc app calls
       {@link sendUpdate} earlier than the specified interval the messaging layer
-      may delay updates for much longer than the interval. */
-  sendUpdateInterval: number;
+      may delay updates for much longer than the interval.
+
+      Optional: the messaging layer only SHOULD expose this limit. If it is not
+      exposed, apps should assume a default of `10000`. */
+  sendUpdateInterval?: number;
   /** is the maximum number of bytes that the messaging layer will accept
       for a serialized `update` object passed into a {@link sendUpdate} invocation.
+
+      Optional: the messaging layer only SHOULD expose this limit. If it is not
+      exposed, apps should assume a default of `128000`.
     */
-  sendUpdateMaxSize: number;
+  sendUpdateMaxSize?: number;
   /**
    * set a listener for new status updates.
    * The "serial" specifies the last serial that you know about (defaults to 0).
@@ -105,10 +111,14 @@ export interface Webxdc<StatusPayload> {
 
   /**
    * Join a realtime channel.
+   *
+   * Optional: this API is experimental and may not be implemented by every
+   * messenger yet. Check if it is available with
+   * `window.webxdc.joinRealtimeChannel !== undefined`.
    * @throws Calling this function a second time
    * without leaving the previous channel will throw an error.
    */
-  joinRealtimeChannel(): RealtimeListener;
+  joinRealtimeChannel?(): RealtimeListener;
 
   /**
    * @deprecated See {@link setUpdateListener|`setUpdateListener()`}.
