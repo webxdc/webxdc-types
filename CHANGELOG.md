@@ -13,7 +13,10 @@ release date when you use `npm version` (see `README.md`).
   `Webxdc.joinRealtimeChannel` optional, matching the spec. The messaging layer
   only `SHOULD` expose `sendUpdateInterval`/`sendUpdateMaxSize` (apps assume
   defaults of `10000`/`128000` when absent), and `joinRealtimeChannel` is
-  experimental and may not be implemented by every messenger.
+  experimental and may not be implemented by every webxdc host environment.
+
+  If you get type errors because of this change, these indicate real possible
+  issues in the portability of your webxdc code that you can fix.
 
 ## [2.1.2][] - 2024-11-27
 
