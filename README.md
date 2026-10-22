@@ -11,9 +11,9 @@ types for this API. This library provides those types for you.
 
 ## Why use this?
 
-- you want better autocomplete in your IDE (js and ts)
-- you want to see docuemntation on hover in your IDE (js and ts)
-- you need types for typescript typechecking
+- you want better autocomplete in your IDE (JS and TS)
+- you want to see documentation on hover in your IDE (JS and TS)
+- you need types for typescript type-checking
 
 ## Usage
 
