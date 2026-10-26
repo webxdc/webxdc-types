@@ -7,6 +7,8 @@ release date when you use `npm version` (see `README.md`).
 
 ## [Unreleased]
 
+## [2.3.0][] - 2026-10-26
+
 ## [2.2.0][] - 2026-06-25
 
 ### Changed
@@ -86,7 +88,8 @@ release date when you use `npm version` (see `README.md`).
 Initial public release.
 
 
-[Unreleased]: https://github.com/webxdc/webxdc-types/compare/v2.2.0...HEAD
+[Unreleased]: https://github.com/webxdc/webxdc-types/compare/v2.3.0...HEAD
+[2.3.0]: https://github.com/webxdc/webxdc-types/compare/v2.2.0...v2.3.0
 [2.2.0]: https://github.com/webxdc/webxdc-types/compare/v2.1.2...v2.2.0
 [2.1.2]: https://github.com/webxdc/webxdc-types/compare/v2.1.1...v2.1.2
 [2.1.1]: https://github.com/webxdc/webxdc-types/compare/v2.1.0...v2.1.1
