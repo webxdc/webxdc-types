@@ -9,6 +9,10 @@ release date when you use `npm version` (see `README.md`).
 
 ## [2.3.0][] - 2026-10-26
 
+### Added
+
+- Add isAppSender and isBroadcast to Webxdc interface
+
 ## [2.2.0][] - 2026-06-25
 
 ### Changed
